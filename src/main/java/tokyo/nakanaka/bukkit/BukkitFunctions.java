@@ -11,15 +11,15 @@ import tokyo.nakanaka.bukkit.commandSender.BukkitPlayer;
 import tokyo.nakanaka.commandSender.CommandSender;
 
 public class BukkitFunctions {
-	public static CommandSender convertCommandSender(org.bukkit.command.CommandSender original) {
-		if(original instanceof Player p) {
+	public static CommandSender convertCommandSender(org.bukkit.command.CommandSender cmdSender0) {
+		if(cmdSender0 instanceof Player p) {
 			return new BukkitPlayer(p);
-		}else if(original instanceof BlockCommandSender b) {
+		}else if(cmdSender0 instanceof BlockCommandSender b) {
 			return new BukkitBlockCommandSender(b);
-		}else if(original instanceof ConsoleCommandSender c) {
+		}else if(cmdSender0 instanceof ConsoleCommandSender c) {
 			return new BukkitConsoleCommandSender(c);
 		}else {
-			return new BukkitCommandSender(original);
+			return new BukkitCommandSender(cmdSender0);
 		}
 	}
 }
