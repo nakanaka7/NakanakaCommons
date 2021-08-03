@@ -1,4 +1,4 @@
-package tokyo.nakanaka.world;
+package tokyo.nakanaka;
 
 import tokyo.nakanaka.block.Block;
 import tokyo.nakanaka.particle.Particle;

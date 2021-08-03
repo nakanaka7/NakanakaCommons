@@ -6,9 +6,9 @@ import org.bukkit.Server;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.data.BlockData;
 
+import tokyo.nakanaka.World;
 import tokyo.nakanaka.block.Block;
 import tokyo.nakanaka.particle.Particle;
-import tokyo.nakanaka.world.World;
 
 public class BukkitWorld implements World{
 	private Server server;
