@@ -7,6 +7,7 @@ import org.bukkit.block.BlockState;
 import org.bukkit.block.data.BlockData;
 
 import tokyo.nakanaka.block.Block;
+import tokyo.nakanaka.particle.Particle;
 import tokyo.nakanaka.world.World;
 
 public class BukkitWorld implements World{
@@ -59,6 +60,18 @@ public class BukkitWorld implements World{
 		} else if (!uid.equals(other.uid))
 			return false;
 		return true;
+	}
+
+	@Override
+	public void spawnParticle(double x, double y, double z, Particle particle, int count) {
+		String name = particle.getId().getName();
+		org.bukkit.Particle p;
+		try{
+			p = org.bukkit.Particle.valueOf(name.toUpperCase());
+		}catch(IllegalArgumentException e) {
+			throw new IllegalArgumentException();
+		}
+		this.world.spawnParticle(p, x, y, z, count);
 	}
 	
 }
