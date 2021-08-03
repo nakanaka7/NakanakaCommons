@@ -13,21 +13,21 @@ public class Block {
 	private NamespacedID id;
 	private Map<String, String> stateMap;
 	
-	private Block(NamespacedID id, Map<String, String> stateMap) {
+	public Block(NamespacedID id, Map<String, String> stateMap) {
 		this.id = id;
 		this.stateMap = new HashMap<>(stateMap);
 	}
 
 	/**
-	 * @param str
+	 * @param blockStateStr
 	 * @return
 	 * @throws IllegalArgumentException
 	 */
-	public static Block valueOf(String str) {
-		if(!str.contains(":")) {
-			str = "minecraft:" + str;
+	public static Block valueOf(String blockStateStr) {
+		if(!blockStateStr.contains(":")) {
+			blockStateStr = "minecraft:" + blockStateStr;
 		}
-		MapHolder holder = MapHolder.valueOf(str);
+		MapHolder holder = MapHolder.valueOf(blockStateStr);
 		NamespacedID id = NamespacedID.valueOf(holder.getName());
 		return new Block(id, holder.getMap());
 	}
