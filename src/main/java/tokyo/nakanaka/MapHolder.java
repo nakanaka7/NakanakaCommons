@@ -4,16 +4,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 /**
- * A class for the String expression "name[&lt;key&gt;=&lt;value&gt;...]". The keys and values must be String.
+ * A class for the String expression "&lt;name&gt;[&lt;key&gt;=&lt;value&gt;...]", or just "&lt;name&gt;". 
+ * (It has no key and values in the case) The keys and values must be String.
  */
 public class MapHolder {
 	private String name;
-	private Map<String, String> map;
+	private LinkedHashMap<String, String> map;
 	/**
 	 * Constructs a map holder 
 	 * @param name the name of the map holder
@@ -21,7 +23,7 @@ public class MapHolder {
 	 */
 	public MapHolder(String name, Map<String, String> map) {
 		this.name = name;
-		this.map = new HashMap<>(map);
+		this.map = new LinkedHashMap<>(map);
 	}
 	/**
 	 * @return name of the map holder
@@ -51,7 +53,7 @@ public class MapHolder {
 		
 	}
 	/**
-	 * @param str the input String, which must be the form "name[<key>=<value>...]".
+	 * @param str the input String.
 	 * @return a map holder for the input String
 	 * @throws IllegalArgumentException if the input is not the appropriate form
 	 */
@@ -76,7 +78,7 @@ public class MapHolder {
 				throw new IllegalArgumentException("must contains only 1 \"[\"");
 			}
 			String name = strs[0];
-			Map<String, String> map = new HashMap<>();
+			Map<String, String> map = new LinkedHashMap<>();
 			String[] kvs = strs[1].split(",", -1);
 			List<String> kvList = new ArrayList<>(Arrays.asList(kvs));
 			for(String kv : kvList) {
