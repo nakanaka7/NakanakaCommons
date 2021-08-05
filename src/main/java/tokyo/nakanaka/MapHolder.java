@@ -8,24 +8,36 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
-
+/**
+ * A class for the String expression "name[<key>=<value>...]". The keys and values must be String.
+ */
 public class MapHolder {
 	private String name;
 	private Map<String, String> map;
-	
+	/**
+	 * Constructs a map holder 
+	 * @param name the name of the map holder
+	 * @param map the map of the map holder
+	 */
 	public MapHolder(String name, Map<String, String> map) {
 		this.name = name;
 		this.map = new HashMap<>(map);
 	}
-	
+	/**
+	 * @return name of the map holder
+	 */
 	public String getName() {
 		return name;
 	}
-	
+	/**
+	 * @return the map of the map holder
+	 */
 	public Map<String, String> getMap() {
 		return map;
 	}
-
+	/**
+	 * @return the String expression of the map holder. 
+	 */
 	@Override
 	public String toString() {
 		if(map.size() == 0) {
@@ -38,7 +50,11 @@ public class MapHolder {
 		return this.name + "[" + String.join(",", inner) + "]";
 		
 	}
-
+	/**
+	 * @param str the input String, which must be the form "name[<key>=<value>...]".
+	 * @return a map holder for the input String
+	 * @throws IllegalArgumentException if the input is not the appropriate form
+	 */
 	public static MapHolder valueOf(String str) {
 		if(!str.contains("[") && !str.contains("]")) {
 			return new MapHolder(str, new HashMap<>());
