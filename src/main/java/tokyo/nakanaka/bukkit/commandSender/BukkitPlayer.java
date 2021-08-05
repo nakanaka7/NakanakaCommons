@@ -6,8 +6,14 @@ import tokyo.nakanaka.BlockPosition;
 import tokyo.nakanaka.Player;
 import tokyo.nakanaka.World;
 import tokyo.nakanaka.bukkit.BukkitWorld;
-
+/**
+ * Represents a player for bukkit
+ */
 public class BukkitPlayer extends BukkitCommandSender implements Player {
+	/**
+	 * Construct a player for bukkit
+	 * @param player0 an original player of bukkit
+	 */
 	public BukkitPlayer(org.bukkit.entity.Player player0) {
 		super(player0);
 	}
