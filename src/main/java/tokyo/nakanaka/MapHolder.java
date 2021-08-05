@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 /**
- * A class for the String expression "name[<key>=<value>...]". The keys and values must be String.
+ * A class for the String expression "name[&lt;key&gt;=&lt;value&gt;...]". The keys and values must be String.
  */
 public class MapHolder {
 	private String name;
