@@ -1,5 +1,7 @@
 package tokyo.nakanaka.logger;
-
+/**
+ * A enum of log color, each has MOTD color code.
+ */
 public enum LogColor {
 	DARK_RED("\u00A74"),
 	RED("\u00A7c"),
@@ -27,7 +29,10 @@ public enum LogColor {
 	private LogColor(String str) {
 		this.str = str;
 	}
-	
+	/**
+	 * Return MOTD color code
+	 * @return MOTD color code
+	 */
 	@Override
 	public String toString() {
 		return this.str;
