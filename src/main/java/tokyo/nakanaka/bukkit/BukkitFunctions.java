@@ -11,6 +11,11 @@ import tokyo.nakanaka.bukkit.commandSender.BukkitPlayer;
 import tokyo.nakanaka.commandSender.CommandSender;
 
 public class BukkitFunctions {
+	/**
+	 * Convert from bukkit command sender to this project command sender 
+	 * @param cmdSender0 bukkit command sender
+	 * @return a command sender for this project
+	 */
 	public static CommandSender convertCommandSender(org.bukkit.command.CommandSender cmdSender0) {
 		if(cmdSender0 instanceof Player p) {
 			return new BukkitPlayer(p);
