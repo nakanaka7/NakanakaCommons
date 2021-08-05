@@ -4,9 +4,14 @@ import tokyo.nakanaka.BlockPosition;
 import tokyo.nakanaka.World;
 import tokyo.nakanaka.bukkit.BukkitWorld;
 import tokyo.nakanaka.commandSender.BlockCommandSender;
-
+/**
+ * Represents a block command sender for bukkit
+ */
 public class BukkitBlockCommandSender extends BukkitCommandSender implements BlockCommandSender { 
-	
+	/**
+	 * Construct a block command sender
+	 * @param blockCmdSender original block command sender of bukkit
+	 */
 	public BukkitBlockCommandSender(org.bukkit.command.BlockCommandSender blockCmdSender) {
 		super(blockCmdSender);
 	}
