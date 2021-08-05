@@ -4,28 +4,42 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
-
+/**
+ * A class for the String expression "&lt;name&gt;[&lt;key&gt;=&lt;value&gt;...]", or just "&lt;name&gt;". 
+ * (It has no key and values in the case) The keys and values must be String.
+ */
 public class MapHolder {
 	private String name;
-	private Map<String, String> map;
-	
+	private LinkedHashMap<String, String> map;
+	/**
+	 * Constructs a map holder 
+	 * @param name the name of the map holder
+	 * @param map the map of the map holder
+	 */
 	public MapHolder(String name, Map<String, String> map) {
 		this.name = name;
-		this.map = new HashMap<>(map);
+		this.map = new LinkedHashMap<>(map);
 	}
-	
+	/**
+	 * @return name of the map holder
+	 */
 	public String getName() {
 		return name;
 	}
-	
+	/**
+	 * @return the map of the map holder
+	 */
 	public Map<String, String> getMap() {
 		return map;
 	}
-
+	/**
+	 * @return the String expression of the map holder. 
+	 */
 	@Override
 	public String toString() {
 		if(map.size() == 0) {
@@ -38,7 +52,11 @@ public class MapHolder {
 		return this.name + "[" + String.join(",", inner) + "]";
 		
 	}
-
+	/**
+	 * @param str the input String.
+	 * @return a map holder for the input String
+	 * @throws IllegalArgumentException if the input is not the appropriate form
+	 */
 	public static MapHolder valueOf(String str) {
 		if(!str.contains("[") && !str.contains("]")) {
 			return new MapHolder(str, new HashMap<>());
@@ -60,7 +78,7 @@ public class MapHolder {
 				throw new IllegalArgumentException("must contains only 1 \"[\"");
 			}
 			String name = strs[0];
-			Map<String, String> map = new HashMap<>();
+			Map<String, String> map = new LinkedHashMap<>();
 			String[] kvs = strs[1].split(",", -1);
 			List<String> kvList = new ArrayList<>(Arrays.asList(kvs));
 			for(String kv : kvList) {

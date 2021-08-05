@@ -2,27 +2,35 @@ package tokyo.nakanaka;
 
 import tokyo.nakanaka.block.Block;
 import tokyo.nakanaka.particle.Particle;
-
+/**
+ * Represents a minecraft world
+ */
 public interface World {
-	
+	/**
+	 * Get a block at the specified position
+	 * @param x the x coordinate of the block
+	 * @param y the y coordinate of the block
+	 * @param z the z coordinate of the block
+	 * @return block at the specified position
+	 */
 	Block getBlock(int x, int y, int z);
 	/**
-	 * @param x
-	 * @param y
-	 * @param z
-	 * @param block
-	 * @param physics
-	 * @throws IllegalArgumentException
+	 * Set a block at the specified position
+	 * @param x the x coordinate of the block
+	 * @param y the y coordinate of the block
+	 * @param z the z coordinate of the block
+	 * @param block to place
+	 * @param physics whether apply physics when setting a block
+	 * @throws IllegalArgumentException if the world cannot set the block
 	 */
 	void setBlock(int x, int y, int z, Block block, boolean physics);
-	
 	/**
-	 * @param x
-	 * @param y
-	 * @param z
-	 * @param particle
+	 * Spawn particle(s) at the specified position
+	 * @param x the x coordinate of the block
+	 * @param y the y coordinate of the block
+	 * @param z the z coordinate of the block
+	 * @param particle to spawn
 	 * @throws IllegalArgumentException if this world can not spawn the particle
 	 */
 	void spawnParticle(double x, double y, double z, Particle particle, int count);
-	
 }
