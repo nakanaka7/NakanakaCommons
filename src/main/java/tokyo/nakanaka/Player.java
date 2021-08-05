@@ -1,6 +1,8 @@
-package tokyo.nakanaka.commandSender;
+package tokyo.nakanaka;
 
 import java.util.UUID;
+
+import tokyo.nakanaka.commandSender.BlockPositionalCommandSender;
 /**
  * Represents a player
  */
