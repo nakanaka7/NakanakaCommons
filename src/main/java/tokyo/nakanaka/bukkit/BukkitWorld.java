@@ -9,12 +9,19 @@ import org.bukkit.block.data.BlockData;
 import tokyo.nakanaka.World;
 import tokyo.nakanaka.block.Block;
 import tokyo.nakanaka.particle.Particle;
-
+/**
+ * A world for Bukkit
+ */
 public class BukkitWorld implements World{
 	private Server server;
 	private org.bukkit.World world;
 	private UUID uid;
 	
+	/**
+	 * Construct a world 
+	 * @param server a server
+	 * @param world a world of original
+	 */
 	public BukkitWorld(Server server, org.bukkit.World world) {
 		this.server = server;
 		this.world = world;
