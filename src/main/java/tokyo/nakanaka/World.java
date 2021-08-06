@@ -1,5 +1,7 @@
 package tokyo.nakanaka;
 
+import java.util.UUID;
+
 import tokyo.nakanaka.block.Block;
 import tokyo.nakanaka.particle.Particle;
 /**
@@ -11,6 +13,11 @@ public interface World {
 	 * @return the name of the world
 	 */
 	String getName();
+	/**
+	 * Get the unique ID of the world 
+	 * @return the unique ID of the world
+	 */
+	UUID getUniqueID();
 	/**
 	 * Get a block at the specified position
 	 * @param x the x coordinate of the block
