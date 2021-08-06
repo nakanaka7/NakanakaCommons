@@ -7,5 +7,6 @@ import tokyo.nakanaka.commandSender.BlockPositionalCommandSender;
  * Represents a player
  */
 public interface Player extends BlockPositionalCommandSender {
-	public UUID getUniqueID();
+	UUID getUniqueID();
+	
 }
