@@ -7,6 +7,11 @@ import tokyo.nakanaka.particle.Particle;
  */
 public interface World {
 	/**
+	 * Return the name of the world
+	 * @return the name of the world
+	 */
+	String getName();
+	/**
 	 * Get a block at the specified position
 	 * @param x the x coordinate of the block
 	 * @param y the y coordinate of the block
