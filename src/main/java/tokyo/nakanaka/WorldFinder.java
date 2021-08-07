@@ -1,5 +1,6 @@
 package tokyo.nakanaka;
 
+import java.util.List;
 import java.util.UUID;
 /**
  * An interface which has methods to find a world
@@ -19,4 +20,9 @@ public interface WorldFinder {
 	 * if it can not find the world
 	 */
 	World findBy(UUID uid);
+	/**
+	 * Return a list of the worlds
+	 * @return a list of the worlds
+	 */
+	List<World> getWorldList();
 }
