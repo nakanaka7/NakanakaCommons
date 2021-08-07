@@ -29,6 +29,16 @@ public class BukkitWorld implements World{
 	}
 	
 	@Override
+	public String getName() {
+		return this.world.getName();
+	}
+	
+	@Override
+	public UUID getUniqueID() {
+		return this.uid;
+	}
+	
+	@Override
 	public Block getBlock(int x, int y, int z) {
 		org.bukkit.block.Block bukkitBlock = world.getBlockAt(x, y, z);
 		Block block = Block.valueOf(bukkitBlock.getBlockData().getAsString());
