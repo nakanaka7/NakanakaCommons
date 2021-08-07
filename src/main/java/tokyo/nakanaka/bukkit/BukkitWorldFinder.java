@@ -12,7 +12,10 @@ import tokyo.nakanaka.WorldFinder;
  */
 public class BukkitWorldFinder implements WorldFinder{
 	private Server server;
-	
+	/**
+	 * Construct a world finder for bukkit
+	 * @param server the server of the bukkit
+	 */
 	public BukkitWorldFinder(Server server) {
 		this.server = server;
 	}
