@@ -1,6 +1,8 @@
 package tokyo.nakanaka.bukkit;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.bukkit.Server;
 
@@ -36,6 +38,13 @@ public class BukkitWorldFinder implements WorldFinder{
 			return null;
 		}
 		return new BukkitWorld(this.server, world0);
+	}
+
+	@Override
+	public List<World> getWorldList() {
+		return this.server.getWorlds().stream()
+			.map(s -> new BukkitWorld(this.server, s))
+			.collect(Collectors.toList());
 	}
 
 }
