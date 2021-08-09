@@ -3,6 +3,7 @@ package tokyo.nakanaka;
 import java.util.UUID;
 
 import tokyo.nakanaka.block.Block;
+import tokyo.nakanaka.particle.DisplayMode;
 import tokyo.nakanaka.particle.Particle;
 /**
  * Represents a minecraft world
@@ -37,7 +38,7 @@ public interface World {
 	 */
 	void setBlock(int x, int y, int z, Block block, boolean physics);
 	/**
-	 * Spawn particle(s) at the specified position
+	 * Spawn particle(s) at the specified position. The mode is "nornal".
 	 * @param x the x coordinate of the block
 	 * @param y the y coordinate of the block
 	 * @param z the z coordinate of the block
@@ -45,4 +46,14 @@ public interface World {
 	 * @throws IllegalArgumentException if this world can not spawn the particle
 	 */
 	void spawnParticle(double x, double y, double z, Particle particle, int count);
+	/**
+	 * Spawn particle(s) at the specified position.
+	 * @param x the x coordinate of the block
+	 * @param y the y coordinate of the block
+	 * @param z the z coordinate of the block
+	 * @param particle to spawn
+	 * @param mode the display mode, normal or force
+	 * @throws IllegalArgumentException if this world can not spawn the particle
+	 */
+	void spawnParticle(double x, double y, double z, Particle particle, int count, DisplayMode mode);
 }
