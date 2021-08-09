@@ -88,7 +88,7 @@ public class BukkitWorld implements World{
 		}catch(IllegalArgumentException e) {
 			throw new IllegalArgumentException();
 		}
-		this.world.spawnParticle(p, x, y, z, count);
+		this.world.spawnParticle(p, x, y, z, count, 0, 0, 0, 0, null, false);
 	}
 	
 }
