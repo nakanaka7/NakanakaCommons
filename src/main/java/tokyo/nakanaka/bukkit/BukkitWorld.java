@@ -8,6 +8,7 @@ import org.bukkit.block.data.BlockData;
 
 import tokyo.nakanaka.World;
 import tokyo.nakanaka.block.Block;
+import tokyo.nakanaka.particle.DisplayMode;
 import tokyo.nakanaka.particle.Particle;
 /**
  * A world for Bukkit
@@ -81,6 +82,11 @@ public class BukkitWorld implements World{
 
 	@Override
 	public void spawnParticle(double x, double y, double z, Particle particle, int count) {
+		this.spawnParticle(x, y, z, particle, count, DisplayMode.NORMAL);
+	}
+	
+	@Override
+	public void spawnParticle(double x, double y, double z, Particle particle, int count, DisplayMode mode) {
 		String name = particle.getId().getName();
 		org.bukkit.Particle p;
 		try{
@@ -88,7 +94,11 @@ public class BukkitWorld implements World{
 		}catch(IllegalArgumentException e) {
 			throw new IllegalArgumentException();
 		}
-		this.world.spawnParticle(p, x, y, z, count, 0, 0, 0, 0, null, false);
+		boolean force = switch(mode) {
+			case FORCE: yield true;
+			case NORMAL: yield false;
+		};
+		this.world.spawnParticle(p, x, y, z, count, 0, 0, 0, 0, null, force);
 	}
 	
 }
