@@ -37,7 +37,7 @@ public interface World {
 	 */
 	void setBlock(int x, int y, int z, Block block, boolean physics);
 	/**
-	 * Spawn particle(s) at the specified position
+	 * Spawn particle(s) at the specified position. The mode is "nornal".
 	 * @param x the x coordinate of the block
 	 * @param y the y coordinate of the block
 	 * @param z the z coordinate of the block
