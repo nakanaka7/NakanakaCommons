@@ -54,6 +54,7 @@ public class DustParticle extends Particle {
 		return size;
 	}
 	/**
+	 * Not API
 	 * Get a dust particle. The arg must be "&lt;red&gt; &lt;green&gt; &lt;blue&gt; &lt;size&gt;" 
 	 * @param arg the argument to specify a dust particle
 	 * @return a dust particle for the arg
@@ -70,6 +71,7 @@ public class DustParticle extends Particle {
 		return new DustParticle(red, green, blue, size);
 	}
 	/**
+	 * Not API
 	 * Get a list for tab complete of parsing arg to a dust particle. The parsing way is given by of() method.
 	 * @param args the argument to specify a dust particle
 	 * @return a list for tab complete of parsing arg to a dust particle.
