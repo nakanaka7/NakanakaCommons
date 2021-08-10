@@ -52,12 +52,12 @@ public class DustParticle extends Particle {
 		return size;
 	}
 	/**
-	 * 
+	 * Get a dust particle. The arg must be "&lt;red&gt; &lt;green&gt; &lt;blue&gt; &lt;size&gt;" 
 	 * @param arg the argument to specify a dust particle
 	 * @return a dust particle for the arg
 	 * @throws if it can not parse arg to a dust particle
 	 */
-	DustParticle parse(String[] args) {
+	public static DustParticle of(String[] args) {
 		if(args.length != 4) {
 			throw new IllegalArgumentException();
 		}
