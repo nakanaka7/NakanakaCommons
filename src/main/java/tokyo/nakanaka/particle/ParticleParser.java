@@ -9,7 +9,8 @@ public interface ParticleParser {
 	/**
 	 * Parse the input to get a particle
 	 * @param input the String array for the particle
-	 * @return a particle, or null if it failed to parse the input
+	 * @return a particle
+	 * @throws IllegalArgumentException if it cannot parse input to a particle
 	 */
 	Particle parse(String... input);
 	/**
