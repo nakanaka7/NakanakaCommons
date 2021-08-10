@@ -6,13 +6,13 @@ import tokyo.nakanaka.block.Block;
 /**
  * Represents a particle which id is "minecraft:falling_dust"
  */
-public class FallingDustBlock extends Particle {
+public class FallingDustParticle extends Particle {
 	private Block block;
 	/**
 	 * Construct a particle 
 	 * @param block a block which is used by the particle
 	 */
-	public FallingDustBlock(Block block) {
+	public FallingDustParticle(Block block) {
 		super(NamespacedID.valueOf("minecraft:block"));
 		this.block = block;
 	}
