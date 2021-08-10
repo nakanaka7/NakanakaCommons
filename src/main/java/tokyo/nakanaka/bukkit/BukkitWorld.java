@@ -2,6 +2,7 @@ package tokyo.nakanaka.bukkit;
 
 import java.util.UUID;
 
+import org.bukkit.Color;
 import org.bukkit.Server;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.data.BlockData;
@@ -9,6 +10,7 @@ import org.bukkit.block.data.BlockData;
 import tokyo.nakanaka.World;
 import tokyo.nakanaka.block.Block;
 import tokyo.nakanaka.particle.DisplayMode;
+import tokyo.nakanaka.particle.DustParticle;
 import tokyo.nakanaka.particle.Particle;
 /**
  * A world for Bukkit
@@ -89,16 +91,24 @@ public class BukkitWorld implements World{
 	public void spawnParticle(double x, double y, double z, Particle particle, int count, DisplayMode mode) {
 		String name = particle.getId().getName();
 		org.bukkit.Particle p;
-		try{
-			p = org.bukkit.Particle.valueOf(name.toUpperCase());
-		}catch(IllegalArgumentException e) {
-			throw new IllegalArgumentException();
+		if(particle instanceof DustParticle dp) {
+			p = org.bukkit.Particle.REDSTONE;
+		}else {
+			try{
+				p = org.bukkit.Particle.valueOf(name.toUpperCase());
+			}catch(IllegalArgumentException e) {
+				throw new IllegalArgumentException();
+			}
+		}
+		Object data = null;
+		if(particle instanceof DustParticle dp) {
+			data = new org.bukkit.Particle.DustOptions(Color.fromRGB(dp.getRed(), dp.getGreen(), dp.getBlue()), dp.getSize());
 		}
 		boolean force = switch(mode) {
 			case FORCE: yield true;
 			case NORMAL: yield false;
 		};
-		this.world.spawnParticle(p, x, y, z, count, 0, 0, 0, 0, null, force);
+		this.world.spawnParticle(p, x, y, z, count, 0, 0, 0, 0, data, force);
 	}
 	
 }
