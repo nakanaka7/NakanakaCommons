@@ -16,18 +16,13 @@ public class BukkitParticleParser implements ParticleParser {
 	@Override
 	public Particle parse(String... input) {
 		if(input.length == 0) {
-			return null;
+			throw new IllegalArgumentException();
 		}
 		String input0 = input[0];
 		if(!input0.contains(":")) {
 			input0 = "minecraft:" + input0;
 		}
-		NamespacedID id;
-		try {
-			id = NamespacedID.valueOf(input0);
-		}catch(IllegalArgumentException e) {
-			return null;
-		}
+		NamespacedID id = NamespacedID.valueOf(input0);
 		String[] args = new String[input.length - 1];
 		System.arraycopy(input, 1, args, 0, input.length - 1);
 		if(id.equals(NamespacedID.valueOf("minecraft:dust"))) {
