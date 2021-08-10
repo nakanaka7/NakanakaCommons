@@ -51,7 +51,7 @@ public class BukkitParticleParser implements ParticleParser {
 		}
 		String input0 = input[0];
 		if(!input0.contains(":")) {
-			input0 += "minecraft:";
+			input0 = "minecraft:" + input0;
 		}
 		NamespacedID id;
 		try {
