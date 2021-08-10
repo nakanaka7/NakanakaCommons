@@ -5,7 +5,7 @@ import tokyo.nakanaka.NamespacedID;
  * Represents particle
  */
 public class Particle {
-	private NamespacedID id;
+	protected NamespacedID id;
 	/**
 	 * Construct particle
 	 * @param id namespacedID of the particle
