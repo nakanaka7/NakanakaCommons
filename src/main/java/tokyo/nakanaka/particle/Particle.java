@@ -20,5 +20,12 @@ public class Particle {
 	public NamespacedID getId() {
 		return id;
 	}
+	/**
+	 * Return a String which is equals to id.toString()
+	 */
+	@Override
+	public String toString() {
+		return this.id.toString();
+	}
 	
 }
