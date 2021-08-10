@@ -42,9 +42,12 @@ public class BukkitParticleParser implements ParticleParser {
 			return List.of();
 		}
 		if(input.length == 1) {
-			return List.of(org.bukkit.Particle.values()).stream()
+			List<String> list = List.of(org.bukkit.Particle.values()).stream()
 				.map(s -> "minecraft:" + s.toString().toLowerCase())
 				.collect(Collectors.toList());
+			list.remove("minecraft:redstone");
+			list.add("minecraft:dust");
+			return list;
 		}
 		String input0 = input[0];
 		if(!input0.contains(":")) {

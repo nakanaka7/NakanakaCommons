@@ -53,6 +53,12 @@ public class DustParticle extends Particle {
 	public float getSize() {
 		return size;
 	}
+	
+	@Override
+	public String toString() {
+		return this.id.toString() + "[red=" + red + ",green=" + green + ",blue=" + blue + ",size=" + size + "]";
+	}
+	
 	/**
 	 * Not API
 	 * Get a dust particle. The arg must be "&lt;red&gt; &lt;green&gt; &lt;blue&gt; &lt;size&gt;" 
