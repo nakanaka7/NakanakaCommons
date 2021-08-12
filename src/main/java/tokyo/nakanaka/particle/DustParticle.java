@@ -18,6 +18,9 @@ public class DustParticle extends Particle {
 	 */
 	public DustParticle(float red, float green, float blue, float size) {
 		super(NamespacedID.valueOf("minecraft:dust"));
+		if(red < 0 || green < 0 || blue < 0) {
+			throw new IllegalArgumentException();
+		}
 		this.red = red;
 		this.green = green;
 		this.blue = blue;
