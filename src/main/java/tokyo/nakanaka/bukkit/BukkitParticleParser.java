@@ -10,6 +10,7 @@ import tokyo.nakanaka.particle.ParticleParser;
 
 /**
  * A particle parser for bukkit
+ * @deprecated
  */
 public class BukkitParticleParser implements ParticleParser {
 
