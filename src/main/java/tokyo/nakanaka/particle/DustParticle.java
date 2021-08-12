@@ -7,9 +7,9 @@ import tokyo.nakanaka.NamespacedID;
  * Represents a particle "minecraft:dust"
  */
 public class DustParticle extends Particle {
-	private int red;
-	private int green;
-	private int blue;
+	private float red;
+	private float green;
+	private float blue;
 	private float size;
 	/**
 	 * Construct a particle from the given parameters
@@ -18,7 +18,7 @@ public class DustParticle extends Particle {
 	 * @param blue the blue component of the color
 	 * @param size the particle size
 	 */
-	public DustParticle(int red, int green, int blue, float size) {
+	public DustParticle(float red, float green, float blue, float size) {
 		super(NamespacedID.valueOf("minecraft:dust"));
 		this.red = red;
 		this.green = green;
@@ -29,21 +29,21 @@ public class DustParticle extends Particle {
 	 * Get a color channel parameter of red 
 	 * @return a color channel parameter of red 
 	 */
-	public int getRed() {
+	public float getRed() {
 		return red;
 	}
 	/**
 	 * Get a color channel parameter of green 
 	 * @return a color channel parameter of green 
 	 */
-	public int getGreen() {
+	public float getGreen() {
 		return green;
 	}
 	/**
 	 * Get a color channel parameter of blue
 	 * @return a color channel parameter of blue 
 	 */
-	public int getBlue() {
+	public float getBlue() {
 		return blue;
 	}
 	/**
