@@ -1,7 +1,5 @@
 package tokyo.nakanaka.particle;
 
-import java.util.List;
-
 import tokyo.nakanaka.NamespacedID;
 /**
  * Represents a particle "minecraft:dust"
@@ -57,40 +55,6 @@ public class DustParticle extends Particle {
 	@Override
 	public String toString() {
 		return this.id.toString() + "[red=" + red + ",green=" + green + ",blue=" + blue + ",size=" + size + "]";
-	}
-	
-	/**
-	 * Not API
-	 * Get a dust particle. The arg must be "&lt;red&gt; &lt;green&gt; &lt;blue&gt; &lt;size&gt;" 
-	 * @param arg the argument to specify a dust particle
-	 * @return a dust particle for the arg
-	 * @throws if it can not parse arg to a dust particle
-	 */
-	public static DustParticle of(String[] args) {
-		if(args.length != 4) {
-			throw new IllegalArgumentException();
-		}
-		int red = Integer.parseInt(args[0]);
-		int green = Integer.parseInt(args[1]);
-		int blue = Integer.parseInt(args[2]);
-		float size = Float.parseFloat(args[3]);
-		return new DustParticle(red, green, blue, size);
-	}
-	/**
-	 * Not API
-	 * Get a list for tab complete of parsing arg to a dust particle. The parsing way is given by of() method.
-	 * @param args the argument to specify a dust particle
-	 * @return a list for tab complete of parsing arg to a dust particle.
-	 */
-	public static List<String> onTabComplete(String[] args){
-		if(1 <= args.length && args.length <= 3) {
-			return List.of("0", "1");
-		}else if(args.length == 4) {
-			return List.of("0.5", "1.0", "1.5", "2.0", "2.5", "3.0", "3.5", "4.0", "4.5", "5.0"
-					, "5.5", "6.0", "6.5", "7.0", "7.5", "8.0", "8.5", "9.0", "9.5");
-		}else {
-			return List.of();
-		}
 	}
 	
 }
