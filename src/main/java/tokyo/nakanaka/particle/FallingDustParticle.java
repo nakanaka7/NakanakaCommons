@@ -13,7 +13,7 @@ public class FallingDustParticle extends Particle {
 	 * @param block a block which is used by the particle
 	 */
 	public FallingDustParticle(Block block) {
-		super(NamespacedID.valueOf("minecraft:block"));
+		super(NamespacedID.valueOf("minecraft:falling_dust"));
 		this.block = block;
 	}
 	/**
