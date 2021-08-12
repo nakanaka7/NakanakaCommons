@@ -38,11 +38,20 @@ public class BukkitParticleParser implements ParticleParser {
 		}
 		if(input.length == 1) {
 			List<String> list = List.of(org.bukkit.Particle.values()).stream()
-				.map(s -> "minecraft:" + s.toString().toLowerCase())
+				.map(s -> s.toString().toLowerCase())
 				.collect(Collectors.toList());
-			list.remove("minecraft:redstone");
-			list.add("minecraft:dust");
-			return list;
+			list.add("ambient_entity_effect");
+			list.remove("spell_mob_ambient");
+			list.add("angry_villager");
+			list.remove("villager_angry");
+			list.add("dust");
+			list.remove("redstone");
+			
+			list.remove("mob_appearance");
+			
+			return list.stream()
+				.map(s -> "minecraft:" + s)
+				.collect(Collectors.toList());
 		}
 		String input0 = input[0];
 		if(!input0.contains(":")) {
