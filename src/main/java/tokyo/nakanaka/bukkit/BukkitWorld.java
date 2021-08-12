@@ -102,7 +102,10 @@ public class BukkitWorld implements World{
 		}
 		Object data = null;
 		if(particle instanceof DustParticle dp) {
-			data = new org.bukkit.Particle.DustOptions(Color.fromRGB(dp.getRed(), dp.getGreen(), dp.getBlue()), dp.getSize());
+			int red = (int)Math.floor(255 * dp.getRed());
+			int green = (int)Math.floor(255 * dp.getRed());
+			int blue = (int)Math.floor(255 * dp.getRed());
+			data = new org.bukkit.Particle.DustOptions(Color.fromRGB(red, green, blue), dp.getSize());
 		}
 		boolean force = switch(mode) {
 			case FORCE: yield true;
