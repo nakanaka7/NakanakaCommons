@@ -5,6 +5,9 @@ import java.util.List;
 /**
  * A parser to get a particle
  */
+/**
+@Deprecated Use {@link ParticleParseHandler}
+*/
 public interface ParticleParser {
 	/**
 	 * Parse the input to get a particle
