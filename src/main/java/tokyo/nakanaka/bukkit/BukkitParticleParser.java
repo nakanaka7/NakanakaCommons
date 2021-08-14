@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import tokyo.nakanaka.NamespacedID;
-import tokyo.nakanaka.bukkit.particle.DustParticleParseHandler;
 import tokyo.nakanaka.particle.Particle;
 import tokyo.nakanaka.particle.ParticleParser;
 
@@ -26,9 +25,6 @@ public class BukkitParticleParser implements ParticleParser {
 		NamespacedID id = NamespacedID.valueOf(input0);
 		String[] args = new String[input.length - 1];
 		System.arraycopy(input, 1, args, 0, input.length - 1);
-		if(id.equals(NamespacedID.valueOf("minecraft:dust"))) {
-			return new DustParticleParseHandler().onParse(args);
-		}
 		return new Particle(id);
 	}
 
@@ -57,17 +53,6 @@ public class BukkitParticleParser implements ParticleParser {
 		String input0 = input[0];
 		if(!input0.contains(":")) {
 			input0 = "minecraft:" + input0;
-		}
-		NamespacedID id;
-		try {
-			id = NamespacedID.valueOf(input0);
-		}catch(IllegalArgumentException e) {
-			return List.of();
-		}
-		String[] args = new String[input.length - 1];
-		System.arraycopy(input, 1, args, 0, input.length - 1);
-		if(id.equals(NamespacedID.valueOf("minecraft:dust"))) {
-			return new DustParticleParseHandler().onTabComplete(args);
 		}
 		return List.of();
 	}
