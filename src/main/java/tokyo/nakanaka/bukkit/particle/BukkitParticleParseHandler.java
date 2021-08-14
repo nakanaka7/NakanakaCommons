@@ -39,6 +39,9 @@ public class BukkitParticleParseHandler implements ParticleParseHandler {
 					.map(s -> "minecraft:" + s.toString().toLowerCase())
 					.collect(Collectors.toList());
 		}else {
+			if(!label.contains(":")) {
+				label = "minecraft:" + label;
+			}
 			NamespacedID id = NamespacedID.valueOf(label);
 			if(this.subParseMap.containsKey(id)) {
 				return this.subParseMap.get(id).onTabComplete(args);
