@@ -1,6 +1,6 @@
 package tokyo.nakanaka.particle;
 
-public enum JavaParticleID {
+public enum ParticleID {
 	AMBIENT_ENTITY_EFFECT,
 	ANGRY_VILLAGER,
 	ASH,

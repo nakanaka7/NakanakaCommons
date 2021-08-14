@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import tokyo.nakanaka.NamespacedID;
-import tokyo.nakanaka.particle.JavaParticleID;
+import tokyo.nakanaka.particle.ParticleID;
 import tokyo.nakanaka.particle.Particle;
 import tokyo.nakanaka.particle.ParticleParseHandler;
 import tokyo.nakanaka.particle.SubParticleParseHandler;
@@ -36,7 +36,7 @@ public class BukkitParticleParseHandler implements ParticleParseHandler {
 	@Override
 	public List<String> onTabComplete(String label, String[] args) {
 		if(args.length == 0) {
-			return List.of(JavaParticleID.values()).stream()
+			return List.of(ParticleID.values()).stream()
 					.map(s -> "minecraft:" + s.toString().toLowerCase())
 					.collect(Collectors.toList());
 		}else {

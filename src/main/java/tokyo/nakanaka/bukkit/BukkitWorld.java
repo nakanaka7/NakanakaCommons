@@ -9,6 +9,7 @@ import org.bukkit.block.data.BlockData;
 
 import tokyo.nakanaka.World;
 import tokyo.nakanaka.block.Block;
+import tokyo.nakanaka.particle.BlockParticle;
 import tokyo.nakanaka.particle.DisplayMode;
 import tokyo.nakanaka.particle.DustParticle;
 import tokyo.nakanaka.particle.Particle;
@@ -93,6 +94,8 @@ public class BukkitWorld implements World{
 		org.bukkit.Particle p;
 		if(particle instanceof DustParticle dp) {
 			p = org.bukkit.Particle.REDSTONE;
+		}else if(particle instanceof BlockParticle bp) {
+			p = org.bukkit.Particle.BLOCK_DUST;
 		}else {
 			try{
 				p = org.bukkit.Particle.valueOf(name.toUpperCase());
@@ -106,6 +109,8 @@ public class BukkitWorld implements World{
 			int green = (int)Math.floor(255 * dp.getGreen());
 			int blue = (int)Math.floor(255 * dp.getBlue());
 			data = new org.bukkit.Particle.DustOptions(Color.fromRGB(red, green, blue), dp.getSize());
+		}else if(particle instanceof BlockParticle bp) {
+			data = this.server.createBlockData(bp.getBlock().getBlockStateString());
 		}
 		boolean force = switch(mode) {
 			case FORCE: yield true;
