@@ -5,6 +5,7 @@ public enum JavaParticleID {
 	ANGRY_VILLAGER,
 	ASH,
 	BARRIER,
+	BLOCK,
 	BUBBLE,
 	BUBBLE_COLUMN_UP,
 	BUBBLE_POP,
