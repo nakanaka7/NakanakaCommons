@@ -18,6 +18,7 @@ public class BukkitParticleParseHandler implements ParticleParseHandler {
 	
 	public BukkitParticleParseHandler() {
 		subParseMap.put(NamespacedID.valueOf("minecraft:dust"), new DustParticleParseHandler());
+		subParseMap.put(NamespacedID.valueOf("minecraft:block"), new BlockParticleParseHandler());
 	}
 	
 	@Override
