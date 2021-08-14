@@ -95,7 +95,11 @@ public class BukkitWorld implements World{
 		if(particle instanceof DustParticle dp) {
 			p = org.bukkit.Particle.REDSTONE;
 		}else if(particle instanceof BlockParticle bp) {
-			p = org.bukkit.Particle.BLOCK_DUST;
+			switch(bp.getType()) {
+				case CRACK -> p = org.bukkit.Particle.BLOCK_CRACK;
+				case DUST -> p = org.bukkit.Particle.BLOCK_DUST;
+				default -> throw new IllegalArgumentException();
+			}
 		}else {
 			try{
 				p = org.bukkit.Particle.valueOf(name.toUpperCase());
