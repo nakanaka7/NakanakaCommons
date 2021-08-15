@@ -8,11 +8,17 @@
   <groupId>tokyo.nakanaka</groupId>
   <artifactId>NakanakaCommons</artifactId>
   <version>1.2.1</version>
+  <repositories>
+    <repository>
+        <id>spigot-repo</id>
+        <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+    </repository>
+  </repositories>
   <dependencies>
     <dependency>
     <groupId>org.spigotmc</groupId>
     <artifactId>spigot-api</artifactId>
-    <version>1.16.5-R0.1-SNAPSHOT</version>
+    <version>1.17.1-R0.1-SNAPSHOT</version>
     <type>jar</type>
     <scope>provided</scope>
     </dependency>
