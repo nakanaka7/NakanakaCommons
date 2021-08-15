@@ -99,17 +99,10 @@ public class BukkitWorld implements World{
 		org.bukkit.Particle p;
 		Object data = null;
 		switch(name) {
-			case "dust" -> {
-				if(!(particle instanceof DustParticle)){
-					throw new IllegalArgumentException();
-				}
-				DustParticle dp = (DustParticle)particle;
-				p = org.bukkit.Particle.REDSTONE;
-				int red = (int)Math.floor(255 * dp.getRed());
-				int green = (int)Math.floor(255 * dp.getGreen());
-				int blue = (int)Math.floor(255 * dp.getBlue());
-				data = new org.bukkit.Particle.DustOptions(Color.fromRGB(red, green, blue), dp.getSize());
-			}
+			case "ambient_entity_effect" -> throw new IllegalArgumentException();
+			case "angry_villager" -> p = org.bukkit.Particle.VILLAGER_ANGRY;
+			case "ash" -> p = org.bukkit.Particle.ASH;
+			case "barrier" -> p = org.bukkit.Particle.BARRIER;
 			case "block" -> {
 				if(!(particle instanceof BlockParticle bp)) {
 					throw new IllegalArgumentException();
@@ -121,6 +114,27 @@ public class BukkitWorld implements World{
 				}
 				data = this.server.createBlockData(bp.getBlock().getBlockStateString());
 			}
+			case "bubble" -> throw new IllegalArgumentException();
+			case "bubble_column_up" -> throw new IllegalArgumentException();
+			case "bubble_pop" -> throw new IllegalArgumentException();
+			case "campfire_cosy_smoke" -> p = org.bukkit.Particle.CAMPFIRE_COSY_SMOKE;
+			case "campfire_signal_smoke" -> p = org.bukkit.Particle.CAMPFIRE_SIGNAL_SMOKE;
+			case "cloud" -> p = org.bukkit.Particle.CLOUD;
+			case "dust" -> {
+				if(!(particle instanceof DustParticle)){
+					throw new IllegalArgumentException();
+				}
+				DustParticle dp = (DustParticle)particle;
+				p = org.bukkit.Particle.REDSTONE;
+				int red = (int)Math.floor(255 * dp.getRed());
+				int green = (int)Math.floor(255 * dp.getGreen());
+				int blue = (int)Math.floor(255 * dp.getBlue());
+				data = new org.bukkit.Particle.DustOptions(Color.fromRGB(red, green, blue), dp.getSize());
+			}
+			case "happy_villager" -> p = org.bukkit.Particle.VILLAGER_HAPPY;
+			case "wax_off" -> p = org.bukkit.Particle.WAX_OFF;
+			case "wax_on" -> p = org.bukkit.Particle.WAX_ON;
+			case "witch" -> p = org.bukkit.Particle.SPELL_WITCH;
 			default -> p = org.bukkit.Particle.valueOf(name.toUpperCase());
 		}
 		boolean force = switch(mode) {
