@@ -7,6 +7,7 @@ import org.bukkit.Server;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.data.BlockData;
 
+import tokyo.nakanaka.NamespacedID;
 import tokyo.nakanaka.World;
 import tokyo.nakanaka.block.Block;
 import tokyo.nakanaka.particle.BlockParticle;
@@ -90,31 +91,37 @@ public class BukkitWorld implements World{
 	
 	@Override
 	public void spawnParticle(double x, double y, double z, Particle particle, int count, DisplayMode mode) {
-		String name = particle.getId().getName();
-		org.bukkit.Particle p;
-		if(particle instanceof DustParticle dp) {
-			p = org.bukkit.Particle.REDSTONE;
-		}else if(particle instanceof BlockParticle bp) {
-			switch(bp.getType()) {
-				case CRACK -> p = org.bukkit.Particle.BLOCK_CRACK;
-				case DUST -> p = org.bukkit.Particle.BLOCK_DUST;
-				default -> throw new IllegalArgumentException();
-			}
-		}else {
-			try{
-				p = org.bukkit.Particle.valueOf(name.toUpperCase());
-			}catch(IllegalArgumentException e) {
-				throw new IllegalArgumentException();
-			}
+		NamespacedID id = particle.getId();
+		if(!id.getNamespace().equals("minecraft")) {
+			throw new IllegalArgumentException();
 		}
+		String name = id.getName();
+		org.bukkit.Particle p;
 		Object data = null;
-		if(particle instanceof DustParticle dp) {
-			int red = (int)Math.floor(255 * dp.getRed());
-			int green = (int)Math.floor(255 * dp.getGreen());
-			int blue = (int)Math.floor(255 * dp.getBlue());
-			data = new org.bukkit.Particle.DustOptions(Color.fromRGB(red, green, blue), dp.getSize());
-		}else if(particle instanceof BlockParticle bp) {
-			data = this.server.createBlockData(bp.getBlock().getBlockStateString());
+		switch(name) {
+			case "dust" -> {
+				if(!(particle instanceof DustParticle)){
+					throw new IllegalArgumentException();
+				}
+				DustParticle dp = (DustParticle)particle;
+				p = org.bukkit.Particle.REDSTONE;
+				int red = (int)Math.floor(255 * dp.getRed());
+				int green = (int)Math.floor(255 * dp.getGreen());
+				int blue = (int)Math.floor(255 * dp.getBlue());
+				data = new org.bukkit.Particle.DustOptions(Color.fromRGB(red, green, blue), dp.getSize());
+			}
+			case "block" -> {
+				if(!(particle instanceof BlockParticle bp)) {
+					throw new IllegalArgumentException();
+				}
+				switch(bp.getType()) {
+					case CRACK -> p = org.bukkit.Particle.BLOCK_CRACK;
+					case DUST -> p = org.bukkit.Particle.BLOCK_DUST;
+					default -> throw new IllegalArgumentException();
+				}
+				data = this.server.createBlockData(bp.getBlock().getBlockStateString());
+			}
+			default -> p = org.bukkit.Particle.valueOf(name.toUpperCase());
 		}
 		boolean force = switch(mode) {
 			case FORCE: yield true;
