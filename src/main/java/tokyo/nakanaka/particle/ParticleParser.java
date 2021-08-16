@@ -4,10 +4,8 @@ import java.util.List;
 
 /**
  * A parser to get a particle
+ * @deprecated
  */
-/**
-@Deprecated 
-*/
 public interface ParticleParser {
 	/**
 	 * Parse the input to get a particle
