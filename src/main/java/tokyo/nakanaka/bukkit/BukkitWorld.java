@@ -3,9 +3,11 @@ package tokyo.nakanaka.bukkit;
 import java.util.UUID;
 
 import org.bukkit.Color;
+import org.bukkit.Material;
 import org.bukkit.Server;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.data.BlockData;
+import org.bukkit.inventory.ItemStack;
 
 import tokyo.nakanaka.NamespacedID;
 import tokyo.nakanaka.World;
@@ -14,6 +16,7 @@ import tokyo.nakanaka.particle.BlockParticle;
 import tokyo.nakanaka.particle.DisplayMode;
 import tokyo.nakanaka.particle.DustParticle;
 import tokyo.nakanaka.particle.FallingDustParticle;
+import tokyo.nakanaka.particle.ItemParticle;
 import tokyo.nakanaka.particle.Particle;
 /**
  * A world for Bukkit
@@ -180,7 +183,17 @@ public class BukkitWorld implements World{
 			case "happy_villager" -> p = org.bukkit.Particle.VILLAGER_HAPPY;
 			case "heart" -> p = org.bukkit.Particle.HEART;
 			case "instant_effect" -> p = org.bukkit.Particle.SPELL_INSTANT;
-			case "item" -> throw new IllegalArgumentException();
+			case "item" -> {
+				if(!(particle instanceof ItemParticle ip)){
+					throw new IllegalArgumentException();
+				}
+				p = org.bukkit.Particle.ITEM_CRACK;
+				NamespacedID idItem = ip.getId();
+				if(!idItem.getNamespace().equals("minecraft")) {
+					throw new IllegalArgumentException();
+				}
+				data = new ItemStack(Material.valueOf(idItem.getName().toUpperCase()));
+			}
 			case "item_slime" -> p = org.bukkit.Particle.SLIME;
 			case "item_snowball" -> p = org.bukkit.Particle.SNOWBALL;
 			case "landing_honey" -> p = org.bukkit.Particle.LANDING_HONEY;
