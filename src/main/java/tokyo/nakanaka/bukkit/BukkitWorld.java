@@ -14,6 +14,7 @@ import tokyo.nakanaka.World;
 import tokyo.nakanaka.block.Block;
 import tokyo.nakanaka.particle.BlockParticle;
 import tokyo.nakanaka.particle.DisplayMode;
+import tokyo.nakanaka.particle.DustColorTransitionParticle;
 import tokyo.nakanaka.particle.DustParticle;
 import tokyo.nakanaka.particle.FallingDustParticle;
 import tokyo.nakanaka.particle.ItemParticle;
@@ -149,7 +150,21 @@ public class BukkitWorld implements World{
 				var blue = (int)Math.floor(255 * dp.getBlue());
 				data = new org.bukkit.Particle.DustOptions(Color.fromRGB(red, green, blue), dp.getSize());
 			}
-			case "dust_color_transition" -> p = org.bukkit.Particle.DUST_COLOR_TRANSITION;
+			case "dust_color_transition" -> {
+				if(!(particle instanceof DustColorTransitionParticle dctp)){
+					throw new IllegalArgumentException();
+				}
+				p = org.bukkit.Particle.DUST_COLOR_TRANSITION;
+				var fromRed = (int)Math.floor(255 * dctp.getFromRed());
+				var fromGreen = (int)Math.floor(255 * dctp.getFromGreen());
+				var fromBlue = (int)Math.floor(255 * dctp.getFromBlue());
+				Color fromColor = Color.fromRGB(fromRed, fromGreen, fromBlue);
+				var toRed = (int)Math.floor(255 * dctp.getToRed());
+				var toGreen = (int)Math.floor(255 * dctp.getToGreen());
+				var toBlue = (int)Math.floor(255 * dctp.getToBlue());
+				Color toColor = Color.fromRGB(toRed, toGreen, toBlue);
+				data = new org.bukkit.Particle.DustTransition(fromColor, toColor, dctp.getSize());
+			}
 			case "effect" -> p = org.bukkit.Particle.SPELL;
 			case "elder_guardian" -> p = org.bukkit.Particle.MOB_APPEARANCE;
 			case "electric_spark" -> p = org.bukkit.Particle.ELECTRIC_SPARK;
