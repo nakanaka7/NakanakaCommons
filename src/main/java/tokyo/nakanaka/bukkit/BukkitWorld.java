@@ -132,9 +132,9 @@ public class BukkitWorld implements World{
 			case "dripping_dripstone_lava" -> p = org.bukkit.Particle.DRIPPING_DRIPSTONE_LAVA;
 			case "dripping_dripstone_water" -> p = org.bukkit.Particle.DRIPPING_DRIPSTONE_WATER;
 			case "dripping_honey" -> p = org.bukkit.Particle.DRIPPING_HONEY;
-			case "dripping_lava" -> throw new IllegalArgumentException();
+			case "dripping_lava" -> p = org.bukkit.Particle.DRIP_LAVA;
 			case "dripping_obsidian_tear" -> p = org.bukkit.Particle.DRIPPING_OBSIDIAN_TEAR;
-			case "dripping_water" -> throw new IllegalArgumentException();
+			case "dripping_water" -> p = org.bukkit.Particle.DRIP_WATER;
 			case "dust" -> {
 				if(!(particle instanceof DustParticle dp)){
 					throw new IllegalArgumentException();
@@ -153,8 +153,9 @@ public class BukkitWorld implements World{
 			case "enchanted_hit" -> throw new IllegalArgumentException();
 			case "end_rod" -> p = org.bukkit.Particle.END_ROD;
 			case "entity_effect" -> throw new IllegalArgumentException();
-			case "explosion" -> throw new IllegalArgumentException();
-			case "explosion_emitter" -> throw new IllegalArgumentException();
+			//? -> EXPLOSION_NORMAL
+			case "explosion" -> p = org.bukkit.Particle.EXPLOSION_LARGE;
+			case "explosion_emitter" -> p = org.bukkit.Particle.EXPLOSION_HUGE;
 			case "falling_dripstone_lava" -> p = org.bukkit.Particle.FALLING_DRIPSTONE_LAVA;
 			case "falling_dripstone_water" -> p = org.bukkit.Particle.FALLING_DRIPSTONE_WATER;
 			case "falling_dust" -> {
