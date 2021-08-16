@@ -116,8 +116,8 @@ public class BukkitWorld implements World{
 				data = this.server.createBlockData(bp.getBlock().getBlockStateString());
 			}
 			case "bubble" -> throw new IllegalArgumentException();
-			case "bubble_column_up" -> throw new IllegalArgumentException();
-			case "bubble_pop" -> throw new IllegalArgumentException();
+			case "bubble_column_up" -> p = org.bukkit.Particle.BUBBLE_COLUMN_UP;
+			case "bubble_pop" -> p = org.bukkit.Particle.BUBBLE_POP;
 			case "campfire_cosy_smoke" -> p = org.bukkit.Particle.CAMPFIRE_COSY_SMOKE;
 			case "campfire_signal_smoke" -> p = org.bukkit.Particle.CAMPFIRE_SIGNAL_SMOKE;
 			case "cloud" -> p = org.bukkit.Particle.CLOUD;
