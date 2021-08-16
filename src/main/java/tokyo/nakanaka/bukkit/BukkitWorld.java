@@ -103,8 +103,8 @@ public class BukkitWorld implements World{
 		org.bukkit.Particle p;
 		Object data = null;
 		switch(name) {
-			//No use "FALLING_WATER", "ITEM_CRACK", "REVERSE_PORTAL", "SMALL_FLA<E",
-			//"SNOW_SHOVEL", "SUSPENDED_DEPTH"
+			//No use of "FALLING_WATER", "REVERSE_PORTAL", "SMALL_FLA<E",
+			//"SNOW_SHOVEL", and "SUSPENDED_DEPTH"
 			case "ambient_entity_effect" -> p = org.bukkit.Particle.SPELL_MOB_AMBIENT;
 			case "angry_villager" -> p = org.bukkit.Particle.VILLAGER_ANGRY;
 			case "ash" -> p = org.bukkit.Particle.ASH;
