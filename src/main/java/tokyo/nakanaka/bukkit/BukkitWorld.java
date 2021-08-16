@@ -147,7 +147,7 @@ public class BukkitWorld implements World{
 			}
 			case "dust_color_transition" -> p = org.bukkit.Particle.DUST_COLOR_TRANSITION;
 			case "effect" -> throw new IllegalArgumentException();
-			case "elder_guardian" -> throw new IllegalArgumentException();
+			case "elder_guardian" -> p = org.bukkit.Particle.MOB_APPEARANCE;
 			case "electric_spark" -> p = org.bukkit.Particle.ELECTRIC_SPARK;
 			case "enchant" -> throw new IllegalArgumentException();
 			case "enchanted_hit" -> throw new IllegalArgumentException();
