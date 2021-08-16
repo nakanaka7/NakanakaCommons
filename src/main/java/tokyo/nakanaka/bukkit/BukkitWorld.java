@@ -100,7 +100,7 @@ public class BukkitWorld implements World{
 		org.bukkit.Particle p;
 		Object data = null;
 		switch(name) {
-			case "ambient_entity_effect" -> throw new IllegalArgumentException();
+			case "ambient_entity_effect" -> p = org.bukkit.Particle.SPELL_MOB_AMBIENT;
 			case "angry_villager" -> p = org.bukkit.Particle.VILLAGER_ANGRY;
 			case "ash" -> p = org.bukkit.Particle.ASH;
 			case "barrier" -> p = org.bukkit.Particle.BARRIER;
