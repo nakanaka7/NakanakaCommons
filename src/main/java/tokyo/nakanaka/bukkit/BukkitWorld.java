@@ -188,7 +188,7 @@ public class BukkitWorld implements World{
 					throw new IllegalArgumentException();
 				}
 				p = org.bukkit.Particle.ITEM_CRACK;
-				NamespacedID idItem = ip.getId();
+				NamespacedID idItem = ip.getItem().getId();
 				if(!idItem.getNamespace().equals("minecraft")) {
 					throw new IllegalArgumentException();
 				}
