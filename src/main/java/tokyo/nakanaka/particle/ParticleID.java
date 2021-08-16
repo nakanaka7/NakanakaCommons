@@ -1,5 +1,8 @@
 package tokyo.nakanaka.particle;
 
+/**
+ * Particle list from @Link{https://minecraft.fandom.com/wiki/Particles} 2021/08/16
+ */
 public enum ParticleID {
 	AMBIENT_ENTITY_EFFECT,
 	ANGRY_VILLAGER,
