@@ -27,6 +27,7 @@ public class DustColorTransitionParticle extends Particle {
 		this.fromRed = fromRed;
 		this.fromGreen = fromGreen;
 		this.fromBlue = fromBlue;
+		this.size = size;
 		this.toRed = toRed;
 		this.toGreen = toGreen;
 		this.toBlue = toBlue;
