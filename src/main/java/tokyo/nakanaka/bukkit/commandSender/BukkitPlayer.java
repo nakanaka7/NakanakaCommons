@@ -2,8 +2,13 @@ package tokyo.nakanaka.bukkit.commandSender;
 
 import java.util.UUID;
 
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+
 import tokyo.nakanaka.BlockPosition;
 import tokyo.nakanaka.EntityPosition;
+import tokyo.nakanaka.Item;
+import tokyo.nakanaka.NamespacedID;
 import tokyo.nakanaka.Player;
 import tokyo.nakanaka.World;
 import tokyo.nakanaka.bukkit.BukkitWorld;
@@ -43,6 +48,18 @@ public class BukkitPlayer extends BukkitCommandSender implements Player {
 		double y = player0.getLocation().getY();
 		double z = player0.getLocation().getZ();
 		return new EntityPosition(world, x, y, z);
+	}
+
+	@Override
+	public void giveItem(Item item, int count) {
+		NamespacedID id = item.getId();
+		if(!id.getNamespace().equals("minecraft")) {
+			throw new IllegalArgumentException();
+		}
+		Material material = Material.valueOf(id.getName().toUpperCase());
+		ItemStack itemStack = new ItemStack(material, count);
+		org.bukkit.entity.Player player0 = (org.bukkit.entity.Player)this.sender;
+		player0.getInventory().addItem(itemStack);
 	}
 
 }
