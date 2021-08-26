@@ -4,6 +4,9 @@ import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
+import tokyo.nakanaka.Item;
+import tokyo.nakanaka.ItemStack;
+import tokyo.nakanaka.NamespacedID;
 import tokyo.nakanaka.bukkit.commandSender.BukkitBlockCommandSender;
 import tokyo.nakanaka.bukkit.commandSender.BukkitCommandSender;
 import tokyo.nakanaka.bukkit.commandSender.BukkitConsoleCommandSender;
@@ -27,4 +30,16 @@ public class BukkitFunctions {
 			return new BukkitCommandSender(cmdSender0);
 		}
 	}
+	
+	/**
+	 * Convert from bukkit item stack to this project item stack
+	 * @param itemStack0 bukkit item stack
+	 * @return an item stack for this project
+	 */
+	public static ItemStack convertItemStack(org.bukkit.inventory.ItemStack itemStack0) {
+		NamespacedID id = new NamespacedID("minecraft", itemStack0.getType().toString().toLowerCase());
+		int count = itemStack0.getAmount();
+		return new ItemStack(new Item(id), count);
+	}
+	
 }
