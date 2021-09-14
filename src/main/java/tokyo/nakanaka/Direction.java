@@ -14,6 +14,7 @@ public enum Direction {
 	private int dz;
 	
 	private Direction(String name, int dx, int dy, int dz) {
+		this.name = name;
 		this.dx = dx;
 		this.dy = dy;
 		this.dz = dz;
