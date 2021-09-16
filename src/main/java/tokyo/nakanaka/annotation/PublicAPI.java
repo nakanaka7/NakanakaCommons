@@ -1,7 +1,7 @@
 package tokyo.nakanaka.annotation;
 
 /**
- * Idicates a public API
+ * Indicates a public API
  */
 public @interface PublicAPI {
 	
