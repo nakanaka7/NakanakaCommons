@@ -17,4 +17,11 @@ public interface Player extends BlockPositionalCommandSender {
  	 * @return the position of the player
 	 */
 	EntityPosition getEntityPosition();
+	/**
+	 * Give the player item(s)
+	 * @param item item to give
+	 * @param count item number(s)
+	 * @throws IllegalArgumentException if the item cannot be given to the player
+	 */
+	void giveItem(Item item, int count);
 }

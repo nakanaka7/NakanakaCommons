@@ -5,15 +5,17 @@ import tokyo.nakanaka.math.Vector3D;
  * Represents axis in 3D space
  */
 public enum Axis {
-	X(1, 0, 0),
-	Y(0, 1, 0),
-	Z(0, 0, 1);
+	X("x", 1, 0, 0),
+	Y("y", 0, 1, 0),
+	Z("z", 0, 0, 1);
 	
+	private String name;
 	private double x;
 	private double y;
 	private double z;
 	
-	private Axis(double x, double y, double z) {
+	private Axis(String name, double x, double y, double z) {
+		this.name = name;
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -25,6 +27,11 @@ public enum Axis {
 	 */
 	public Vector3D toVector3D() {
 		return new Vector3D(this.x, this.y, this.z);
+	}
+	
+	@Override
+	public String toString() {
+		return this.name;
 	}
 	
 }
